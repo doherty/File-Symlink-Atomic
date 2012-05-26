@@ -1,2 +1,4 @@
 File-Symlink-Atomic*
 .build
+.name.*
+.target.*
