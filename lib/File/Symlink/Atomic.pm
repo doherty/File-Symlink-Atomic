@@ -17,7 +17,7 @@ our @EXPORT = qw(symlink);
 =head1 DESCRIPTION
 
 Actually creating a symlink is not problematic, but making an existing one point
-at a new target may not be atomic on your system. For example, on Linus, the
+at a new target may not be atomic on your system. For example, on Linux, the
 system does C<unlink> and then C<symlink>. In between, no symlink exists. If
 something goes wrong, you're left with nothing.
 
