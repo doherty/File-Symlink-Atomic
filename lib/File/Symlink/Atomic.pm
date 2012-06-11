@@ -5,6 +5,7 @@ use warnings;
 # VERSION
 
 use File::Temp;
+use File::Spec;
 use Exporter qw(import);
 our @EXPORT = qw(symlink);
 
@@ -40,11 +41,13 @@ shown above does for your shell.
 sub symlink($$) {
     my $symlink_target = shift;
     my $symlink_name   = shift;
-    
+
+    my ($volume, $dirs, $file) = File::Spec->splitpath($symlink_name);
+    my $template = File::Spec->catpath($volume, $dirs, ".$file.$$.XXXXXX");
     my $tmp_symlink_name;
     ATTEMPT:
     for (1..10) { # try 10 times
-        $tmp_symlink_name = mktemp(".$symlink_name.$$.XXXXXX");
+        $tmp_symlink_name = mktemp($template);
         symlink $symlink_target, $tmp_symlink_name and last ATTEMPT;
     }
     return 0 unless -l $tmp_symlink_name; # wtf?
