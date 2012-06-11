@@ -36,6 +36,17 @@ L<POSIX|http://pubs.opengroup.org/onlinepubs/9699919799/functions/rename.html>.
 B<File::Symlink::Atomic> attempts to do the same thing in Perl what the command
 shown above does for your shell.
 
+=head1 FUNCTIONS
+
+=head2 symlink OLDFILE,NEWFILE
+
+Creates a new filename symbolically linked to the old filename.
+Returns C<1> for success, C<0> otherwise. This drop-in replacement
+for C<CORE::symlink> creates a symlink with a temporary name, then
+renames it to the name you requested - this ensures that if a
+symlink by the requested name already existed, then its target is
+updated atomically.
+
 =cut
     
 sub symlink($$) {
