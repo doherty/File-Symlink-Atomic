@@ -7,7 +7,7 @@ use warnings;
 use File::Temp;
 use File::Spec;
 use Exporter qw(import);
-our @EXPORT = qw(symlink);
+our @EXPORT = qw(symlink); ## no critic(Modules::ProhibitAutomaticExportation)
 
 =head1 SYNOPSIS
 
@@ -49,7 +49,7 @@ updated atomically.
 
 =cut
     
-sub symlink($$) {
+sub symlink($$) { ## no critic(Subroutines::ProhibitSubroutinePrototypes Subroutines::ProhibitBuiltinHomonyms)
     my $symlink_target = shift;
     my $symlink_name   = shift;
 
