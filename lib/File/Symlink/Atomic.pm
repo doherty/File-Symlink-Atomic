@@ -53,7 +53,6 @@ sub symlink($$) {
     return 0 unless -l $tmp_symlink_name; # wtf?
     
     rename $tmp_symlink_name, $symlink_name or return 0; # should be atomic
-    unlink $tmp_symlink_name or return 0;
     return 1;
 }
 
