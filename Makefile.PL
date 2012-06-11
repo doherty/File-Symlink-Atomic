@@ -27,6 +27,7 @@ my %WriteMakefileArgs = (
   "NAME" => "File::Symlink::Atomic",
   "PREREQ_PM" => {
     "Exporter" => 0,
+    "File::Spec" => 0,
     "File::Temp" => 0,
     "strict" => 0,
     "warnings" => 0

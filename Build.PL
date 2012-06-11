@@ -28,6 +28,7 @@ my %module_build_args = (
   "recursive_test_files" => 1,
   "requires" => {
     "Exporter" => 0,
+    "File::Spec" => 0,
     "File::Temp" => 0,
     "perl" => "5.006",
     "strict" => 0,
