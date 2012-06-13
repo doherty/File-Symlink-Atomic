@@ -1,3 +1,5 @@
+use lib 'inc';
+use Devel::AssertOS qw[Unix];
 
 use strict;
 use warnings;
@@ -32,7 +34,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }

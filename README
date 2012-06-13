@@ -2,7 +2,7 @@ NAME
     File::Symlink::Atomic - an atomic drop-in replacement for CORE::symlink
 
 VERSION
-    version 0.001
+    version 0.002
 
 SYNOPSIS
         use File::Symlink::Atomic;   # imports replacement symlink
@@ -44,6 +44,9 @@ CAVEATS
     suite to find out!
 
 AVAILABILITY
+    The project homepage is
+    <http://metacpan.org/release/File-Symlink-Atomic/>.
+
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
