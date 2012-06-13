@@ -1,6 +1,7 @@
 Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
+  - Bail unless it is a Unix-ey platform [GH #2]
 
 0.001     2012-06-10
   - Initial revision
