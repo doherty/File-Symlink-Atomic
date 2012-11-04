@@ -24,7 +24,7 @@ subtest 'non-atomic' => sub {
 };
 
 subtest 'atomic' => sub {
-    plan tests => 4;
+    plan tests => 3;
     my $atomic_trace = Sys::Trace->new(
         exec => [$^X, '-Ilib', '-E', "use File::Symlink::Atomic; symlink '$target2', '$name';"]
     );
@@ -32,10 +32,10 @@ subtest 'atomic' => sub {
     $atomic_trace->wait;
 
     my $atomic_results = $atomic_trace->results;
-    ok do { grep { $_->{call} eq 'symlink' } @$atomic_results }, 'symlink system call seen';
+    is do { grep { $_->{call} eq 'symlink' } @$atomic_results }, 1, 'symlink system call seen';
     is do { grep { $_->{call} eq 'rename'  } @$atomic_results }, 1, 'rename system call seen';
-    
-    my @rename_calls = do { grep { $_->{call} eq 'rename'  } @$atomic_results };
-    like $rename_calls[0]->{args}->[0], qr/\Q$name/, 'correct parameters';
-    like $rename_calls[0]->{args}->[1], qr/\Q$name/, 'correct parameters';
+
+    my @rename_calls = grep { $_->{call} eq 'rename' } @$atomic_results;
+    like $rename_calls[0]->{name}, qr{\Q$name}, 'it was a rename of the right file'
+        or diag explain $rename_calls[0];
 };
